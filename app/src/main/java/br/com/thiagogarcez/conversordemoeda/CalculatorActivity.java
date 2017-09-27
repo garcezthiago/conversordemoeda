@@ -1,9 +1,11 @@
 package br.com.thiagogarcez.conversordemoeda;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,7 +52,15 @@ public class CalculatorActivity extends AppCompatActivity {
         Double number = Double.parseDouble(editText.getText().toString());
         Double tax = Double.parseDouble(value);
         Double result = number * tax;
-        textResult.setText(result.toString());
+        String texto = String.format("Total: %.2f", result);
+        textResult.setText(texto);
+
+        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
+                .hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }
+
+    public void BackMainActivity(View view){
+        finish();
     }
 
 

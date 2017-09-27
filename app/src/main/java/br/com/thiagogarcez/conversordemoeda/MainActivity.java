@@ -21,9 +21,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements RateListener{
 
-
-    //@BindView(R.id.textView)
-    //TextView textView;
     @BindView(R.id.textTitle)
     TextView textTitle;
     @BindView(R.id.rcvRates)
@@ -38,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements RateListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //tvData = (TextView) findViewById(R.id.textView);
 
         setupList();
     }
@@ -62,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements RateListener{
             @Override
             public void onResponse(Call<Currency> call, Response<Currency> response) {
                 if (!response.isSuccessful()) {
-                    //Log.e(TAG, "Erro: " + response.code());
+                    Log.e("Erro: ", response.message());
                     Toast.makeText(getApplicationContext(),"Verifique sua internet.",Toast.LENGTH_LONG).show();
                 } else {
                     Currency m = response.body();
@@ -72,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements RateListener{
                     adapter = new RateAdapter(m.rates.getListRate(), MainActivity.this);
                     recyclerView.setAdapter(adapter);
 
-                    Toast.makeText(getApplicationContext(),m.rates.toString(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),m.rates.toString(),Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -88,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements RateListener{
 
     @Override
     public void onItemClick(String name, String value) {
-        //Log.d("teste", "clickou ");
         Intent calculadorActivity = new Intent(this, CalculatorActivity.class);
         calculadorActivity.putExtra("name" ,name);
         calculadorActivity.putExtra("value" ,value);

@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +50,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void Calculator(){
+        if(editText.getText().length() > 0) {
         Double number = Double.parseDouble(editText.getText().toString());
         Double tax = Double.parseDouble(value);
         Double result = number * tax;
@@ -57,6 +59,10 @@ public class CalculatorActivity extends AppCompatActivity {
 
         ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(editText.getWindowToken(), 0);
+        }
+        else {
+            Toast.makeText(CalculatorActivity.this, "Por favor, informe um valor.", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void BackMainActivity(View view){

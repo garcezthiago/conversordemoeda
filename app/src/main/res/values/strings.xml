@@ -2,4 +2,7 @@
     <string name="app_name">Conversor de Moeda</string>
     <string name="lblTitle">Escolha uma moeda</string>
     <string name="title_activity_calculator">CalculatorActivity</string>
+    <string name="btnCalculator">Calcular</string>
+    <string name="btnBack">Escolher outra moeda</string>
+    <string name="lblTitleCalculator">Informe um valor</string>
 </resources>
